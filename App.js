@@ -8,6 +8,7 @@ const Stack = createStackNavigator();
 
 export default function App() {
   return (
+
     <NavigationContainer>
       <Stack.Navigator>
     <Stack.Screen name="Home" component={HomeScreen} />    
@@ -16,6 +17,7 @@ export default function App() {
       </Stack.Navigator>
       </NavigationContainer>
  
+
   );
 }
 
