@@ -4,7 +4,7 @@ import React from 'react'
 const History = ({ navigation }) => {
   return (
     <View>
-      <Text>history</Text>
+      <Text>history!!!!</Text>
       <Button title="Back" onPress={() => navigation.navigate("Home")} />
     </View>
   )
