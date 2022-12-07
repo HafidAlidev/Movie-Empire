@@ -13,7 +13,7 @@ const Home = ({ navigation, userState, logout }) => {
       <Modal animationType="slide" transparent={false} visible={menuModal} onRequestClose={() => { setMenuModal(!menuModal); }}>
         <View style={styles.container}>
           <View style={[styles.modalView]}>
-            <Button title="Search Result" onPress={() => {
+            <Button title="Search Resul" onPress={() => {
               setMenuModal(!menuModal)
               navigation.navigate("Search Result")
             }} />
@@ -46,7 +46,7 @@ const Home = ({ navigation, userState, logout }) => {
       <Text>{userState[0]?.result?.name ? `Welcome Back ${userState[0]?.result?.name}` : 'Home'}</Text>
       <Button title='Menu' onPress={() => setMenuModal(!menuModal)} />
       <TextInput  style={styles.searchinput} placeholder= ""  value = {search}  onChangeText = {setSearch}/>
-      <Button title = 'Search' onPress={() => navigation.navigate("Search Result",{searchtext:search}) } />
+      <Button title = 'Search' onPress={() => navigation.navigate("Search Result",{searchtext:search})} />
     </View>
   )
 }
