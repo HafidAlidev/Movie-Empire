@@ -2,9 +2,11 @@ import { View, Text, Button, StyleSheet, Modal } from 'react-native'
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { login, logout, signup_ } from '../redux/actions/users'
+import { TextInput } from 'react-native-web'
 
 const Home = ({ navigation, userState, logout }) => {
   const [menuModal, setMenuModal] = useState(false);
+  const [search,setSearch] = React.useState("");
   console.log(userState[0])
   return (
     <View>
@@ -43,12 +45,15 @@ const Home = ({ navigation, userState, logout }) => {
       </Modal>
       <Text>{userState[0]?.result?.name ? `Welcome Back ${userState[0]?.result?.name}` : 'Home'}</Text>
       <Button title='Menu' onPress={() => setMenuModal(!menuModal)} />
+      <TextInput  style={styles.searchinput} placeholder= ""  value = {search}  onChangeText = {setSearch}/>
+      <Button title = 'Search' onPress={() => navigation.navigate("Search Result",{searchtext:search}) } />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: "center", alignItems: "center", marginTop: 22 },
+  searchinput: { margin: 15, width: 100,height:30, alignItems: 'left'},
   modalText: { marginBottom: 10 },
   modalView: { width: "80%", height: 'auto', margin: 5, backgroundColor: "white", borderColor: "black", borderWidth: 1, borderRadius: 5, padding: 15, alignItems: "center", justifyContent: "space-between" }
 });
