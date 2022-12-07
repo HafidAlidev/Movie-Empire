@@ -11,6 +11,10 @@ const Home = ({ navigation, userState, logout }) => {
       <Modal animationType="slide" transparent={false} visible={menuModal} onRequestClose={() => { setMenuModal(!menuModal); }}>
         <View style={styles.container}>
           <View style={[styles.modalView]}>
+            <Button title="Search Result" onPress={() => {
+              setMenuModal(!menuModal)
+              navigation.navigate("Search Result")
+            }} />
             <Button title="Favourites" onPress={() => {
               setMenuModal(!menuModal)
               navigation.navigate("Favourites")
