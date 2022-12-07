@@ -2,6 +2,13 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer, } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack'
+import {home} from './pages/home';
+import{login} from './pages/login';
+import {list} from './pages/list';
+import {searchResult} from './Pages/searchResults';
+import{signup} from './Pages/singup';
+import {history} from './Pages/history';
+import{favourites} from './Pages/favourites';
 
 
 const Stack = createStackNavigator();
@@ -11,16 +18,15 @@ export default function App() {
 
     <NavigationContainer>
       <Stack.Navigator>
-    <Stack.Screen name="Home" component={HomeScreen} />    
-    <Stack.Screen name="Login" component={LoginScreen} />    
-     <Stack.Screen name="List" component={ListScreen}/>
-     <Stack.Screen name="SearchResult" component={SearchResultScreen}/>
-     <Stack.Screen name="Signup" component={SignupScreen}/>
-     <Stack.Screen name="History" component={HistoryScreen}/>
+    <Stack.Screen name="Home" component={home} />    
+    <Stack.Screen name="Login" component={login} />    
+     <Stack.Screen name="List" component={list}/>
+     <Stack.Screen name="Search Result" component={searchResult}/>
+     <Stack.Screen name="Signup" component={signup}/>
+     <Stack.Screen name="History" component={history}/>
+     <Stack.Screen name="Favourites" component={favourites}/>
       </Stack.Navigator>
       </NavigationContainer>
- 
-
   );
 }
 
