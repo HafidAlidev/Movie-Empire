@@ -7,7 +7,7 @@ export const login = (value) => ({
     }
 })
 
-export const logout = (value) => ({
+export const logout = () => ({
     type: LOGOUT,
     payload: {}
 })

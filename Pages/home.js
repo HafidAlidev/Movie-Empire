@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { login, logout, signup_ } from '../redux/actions/users'
 
-const Home = ({ navigation, userState }) => {
+const Home = ({ navigation, userState, logout }) => {
   const [menuModal, setMenuModal] = useState(false);
   console.log(userState[0])
   return (
@@ -27,6 +27,12 @@ const Home = ({ navigation, userState }) => {
               setMenuModal(!menuModal)
               navigation.navigate("Login/Signup")
             }} />
+            {
+              userState[0]?.result?.name && <Button title="Logout" onPress={() => {
+                setMenuModal(!menuModal)
+                logout()
+              }} />
+            }
             <Button title="Back" onPress={() => setMenuModal(!menuModal)} />
           </View>
         </View>
