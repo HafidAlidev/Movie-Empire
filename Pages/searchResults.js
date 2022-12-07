@@ -1,12 +1,13 @@
-import { View, Text } from 'react-native'
+import { View, Text, Button } from 'react-native'
 import React from 'react'
 
-const searchResults = () => {
+const SearchResults = ({ navigation }) => {
   return (
     <View>
       <Text>search</Text>
+      <Button title="Back" onPress={() => navigation.navigate("Home")} />
     </View>
   )
 }
 
-export default searchResults
+export default SearchResults

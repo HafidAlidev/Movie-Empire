@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
-import state from "./state";
+import moviesState from "./movies";
+import userState from "./user";
 
-export default combineReducers({ state })
+export default combineReducers({ moviesState, userState })
