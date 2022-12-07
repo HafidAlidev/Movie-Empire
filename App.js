@@ -1,38 +1,38 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer, } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack'
-import {home} from './pages/home';
-import{login} from './pages/login';
-import {list} from './pages/list';
-import {searchResult} from './Pages/searchResults';
-import{signup} from './Pages/singup';
-import {history} from './Pages/history';
-import{favourites} from './Pages/favourites';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { Provider } from 'react-redux';
+import Home from './Pages/Home';
+import WatchLater from './Pages/WatchLater';
+import SearchResults from './Pages/SearchResults';
+import History from './Pages/History';
+import Favourites from './Pages/Favourites';
+import UserAuth from './Pages/UserAuth';
+import store from './redux/store';
 
-
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator()
 
 export default function App() {
   return (
-
-    <NavigationContainer>
-      <Stack.Navigator>
-     <Stack.Screen name="Home" component={home} />    
-    <Stack.Screen name="Login" component={login} />    
-     <Stack.Screen name="List" component={list}/>
-     <Stack.Screen name="Search Result" component={searchResult}/>
-     <Stack.Screen name="Signup" component={signup}/>
-     <Stack.Screen name="History" component={history}/>
-     <Stack.Screen name="Favourites" component={favourites}/>
-      </Stack.Navigator>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Watch Later" component={WatchLater} />
+          <Stack.Screen name="Search Result" component={SearchResults} />
+          <Stack.Screen name="Login/Signup" component={UserAuth} />
+          <Stack.Screen name="History" component={History} />
+          <Stack.Screen name="Favourites" component={Favourites} />
+        </Stack.Navigator>
       </NavigationContainer>
+    </Provider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 3,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',

@@ -1,0 +1,7 @@
+export const LOGIN = "LOGIN"
+export const LOGOUT = "LOGOUT"
+export const SIGNUP = "SIGNUP"
+export const ADD_WATCHLATER = "ADD_WATCHLATER"
+export const ADD_FAVOURITES = "ADD_FAVOURITES"
+export const ADD_HISTORY = "ADD_HISTORY"
+export const ADD_SEARCH_RESULT = "ADD_SEARCH_RESULT"
