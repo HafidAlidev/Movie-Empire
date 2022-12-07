@@ -7,8 +7,12 @@ const renderSearchResults = ({ item }) => (
   <Text>{item.Title}</Text>
 );
 
-const SearchResults = ({ navigation, moviesState, addToSearchResult }) => {
-  const url = "https://www.omdbapi.com/?s=batman&page=1-100&apikey=ee42d47b"
+const SearchResults = ({ navigation, moviesState, addToSearchResult,route }) => {
+
+  const { searchtext } = route.params;
+  const url = "https://www.omdbapi.com/?s="+ searchtext + "&page=1-100&apikey=ee42d47b"
+
+
 
   useEffect(() => {
     fetch(url)
