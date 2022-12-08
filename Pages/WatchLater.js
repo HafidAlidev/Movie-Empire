@@ -1,13 +1,26 @@
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, FlatList } from 'react-native'
 import React from 'react'
+import { connect } from 'react-redux'
+import { addToWatchLater, addToFavourites, addToHistory, addToSearchResult, clearSearchResult } from '../redux/actions/movies'
 
-const WatchLater = ({ navigation }) => {
+const renderWatchLater = ({ item }) => (
+  <Text>{item.Title}</Text>
+);
+
+const WatchLater = ({ navigation, moviesState, clearSearchResult }) => {
   return (
     <View>
-      <Text>watchLater</Text>
-      <Button title="Back" onPress={() => navigation.navigate("Home")} />
+      <Text>Watch Later</Text>
+      <FlatList data={moviesState.watchLater} renderItem={renderWatchLater} />
+      <Button title="Back" onPress={() => {
+        clearSearchResult()
+        navigation.navigate("Home")
+      }} />
     </View>
   )
 }
 
-export default WatchLater
+const mapStateToProps = (moviesState) => (moviesState)
+const mapDispatchToProps = { addToWatchLater, addToFavourites, addToHistory, addToSearchResult, clearSearchResult }
+
+export default connect(mapStateToProps, mapDispatchToProps)(WatchLater)

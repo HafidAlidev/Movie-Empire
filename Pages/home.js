@@ -1,12 +1,14 @@
 import { View, Text, Button, StyleSheet, Modal } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { login, logout, signup_ } from '../redux/actions/users'
+import { clearSearchResult } from '../redux/actions/movies'
 import { TextInput } from 'react-native-web'
 
-const Home = ({ navigation, userState, logout }) => {
+const Home = ({ navigation, userState, logout, clearSearchResult }) => {
   const [menuModal, setMenuModal] = useState(false);
   const [search,setSearch] = useState("");
+
   return (
     <View>
       <Modal animationType="slide" transparent={false} visible={menuModal} onRequestClose={() => { setMenuModal(!menuModal); }}>
@@ -54,6 +56,6 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (userState) => (userState)
-const mapDispatchToProps = { login, logout, signup_ }
+const mapDispatchToProps = { login, logout, signup_, clearSearchResult }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
