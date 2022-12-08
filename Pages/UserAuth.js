@@ -1,8 +1,9 @@
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native'
+import { View, Text, TextInput, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import { signin, signup } from '../auth/actions'
 import { connect } from 'react-redux'
 import { login, logout, signup_ } from '../redux/actions/users'
+import Button from '../custom componet/Button'
 
 const UserAuth = ({ navigation, userState, login, logout, signup_ }) => {
     const [isSignup, setIsSignup] = useState(false)

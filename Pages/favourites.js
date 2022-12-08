@@ -1,7 +1,8 @@
-import { View, Text, Button, FlatList } from 'react-native'
+import { View, Text,FlatList } from 'react-native'
 import React from 'react'
 import { connect } from 'react-redux'
 import { addToWatchLater, addToFavourites, addToHistory, addToSearchResult, clearSearchResult } from '../redux/actions/movies'
+import Button from '../custom componet/Button';
 
 const renderFavourites = ({ item }) => (
   <Text>{item.Title}</Text>
