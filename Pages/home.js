@@ -7,16 +7,11 @@ import { TextInput } from 'react-native-web'
 const Home = ({ navigation, userState, logout }) => {
   const [menuModal, setMenuModal] = useState(false);
   const [search,setSearch] = useState("");
-  console.log(userState[0])
   return (
     <View>
       <Modal animationType="slide" transparent={false} visible={menuModal} onRequestClose={() => { setMenuModal(!menuModal); }}>
         <View style={styles.container}>
           <View style={[styles.modalView]}>
-            <Button title="Search Result" onPress={() => {
-              setMenuModal(!menuModal)
-              navigation.navigate("Search Result")
-            }} />
             <Button title="Favourites" onPress={() => {
               setMenuModal(!menuModal)
               navigation.navigate("Favourites")

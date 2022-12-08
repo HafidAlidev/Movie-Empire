@@ -10,6 +10,7 @@ import History from './Pages/History';
 import Favourites from './Pages/Favourites';
 import UserAuth from './Pages/UserAuth';
 import store from './redux/store';
+import MovieDetails from './Pages/MovieDetails';
 
 const Stack = createNativeStackNavigator()
 
@@ -24,6 +25,7 @@ export default function App() {
           <Stack.Screen name="Login/Signup" component={UserAuth} />
           <Stack.Screen name="History" component={History} />
           <Stack.Screen name="Favourites" component={Favourites} />
+          <Stack.Screen name="Movie Details" component={MovieDetails} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

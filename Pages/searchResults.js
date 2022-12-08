@@ -3,16 +3,9 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { addToWatchLater, addToFavourites, addToHistory, addToSearchResult } from '../redux/actions/movies'
 
-const renderSearchResults = ({ item }) => (
-  <Text>{item.Title}</Text>
-);
-
-const SearchResults = ({ navigation, moviesState, addToSearchResult,route }) => {
-
+const SearchResults = ({ navigation, moviesState, addToSearchResult, route }) => {
   const { searchtext } = route.params;
-  const url = "https://www.omdbapi.com/?s="+ searchtext + "&page=1-100&apikey=ee42d47b"
-
-
+  const url = "https://www.omdbapi.com/?s=" + searchtext + "&page=1-100&apikey=ee42d47b"
 
   useEffect(() => {
     fetch(url)
@@ -24,9 +17,17 @@ const SearchResults = ({ navigation, moviesState, addToSearchResult,route }) => 
       });
   }, []);
 
+  const renderSearchResults = ({ item }) => (
+    <View>
+      <Text>{item.Title}</Text>
+      <Button title="Details" onPress={() => navigation.navigate("Movie Details", { id: item.imdbID })} />
+    </View>
+  );
+
   return (
     <View>
-      <FlatList data={moviesState.searchResult} renderItem={renderSearchResults}/>
+      <Text>Showing Results For: {searchtext}</Text>
+      <FlatList data={moviesState.searchResult} renderItem={renderSearchResults} />
       <Button title="Back" onPress={() => navigation.navigate("Home")} />
     </View>
   )
