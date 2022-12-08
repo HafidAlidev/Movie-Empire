@@ -44,7 +44,7 @@ const Home = ({ navigation, userState, logout }) => {
         </View>
       </Modal>
       <Text>{userState[0]?.result?.name ? `Welcome Back ${userState[0]?.result?.name}` : 'Home'}</Text>
-      <Button title='Menu' onPress={() => setMenuModal(!menuModal)} />
+      <Button title='Menu' onPress={() => setMenuModal(!menuModal)}/>
       <TextInput  style={styles.searchinput} placeholder= ""  value = {search}  onChangeText = {setSearch}/>
       <Button title = 'Search' onPress={() => navigation.navigate("Search Result",{searchtext:search})} />
     </View>
@@ -52,8 +52,8 @@ const Home = ({ navigation, userState, logout }) => {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center", marginTop: 22 },
-  searchinput: { margin: 15, width: 100,height:30, alignItems: 'left'},
+  container: { flex: 1, justifyContent: "left", alignItems: "left", marginTop: 22 },
+  searchinput: { margin: 15, width: 1000,height:30, alignItems: 'left'},
   modalText: { marginBottom: 10 },
   modalView: { width: "80%", height: 'auto', margin: 5, backgroundColor: "black", borderColor: "red", borderWidth: 1, borderRadius: 5, padding: 15, alignItems: "center", justifyContent: "space-between" }
 });
