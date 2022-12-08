@@ -22,7 +22,7 @@ const SearchResults = ({ navigation, moviesState, addToSearchResult, addToHistor
       <Text>{item.Title}</Text>
       <Button title="Details" onPress={() => {
         addToHistory(item)
-        navigation.navigate("Movie Details", { id: item.imdbID })
+        navigation.navigate("Movie Details", { id: item.imdbID, searchtext: searchtext })
       }} />
     </View>
   );

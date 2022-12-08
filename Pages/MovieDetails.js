@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { addToWatchLater, addToFavourites, addToHistory, addToSearchResult } from '../redux/actions/movies'
 
 const MovieDetails = ({ navigation, moviesState, addToFavourites, addToWatchLater, route }) => {
-    const { id } = route.params
+    const { id, searchText } = route.params
     const [movie, setMovie] = useState()
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const MovieDetails = ({ navigation, moviesState, addToFavourites, addToWatchLate
             <Button title='Save to Watch Later' onPress={() => { addToWatchLater(movie) }} />
             <Button title='Add to Favourites' onPress={() => { addToFavourites(movie) }} />
             <Button title="Back" onPress={() => {
-                navigation.navigate("Search Result")
+                navigation.navigate("Search Result", { searchText: searchText })
             }} />
         </View>
     )
