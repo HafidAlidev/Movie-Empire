@@ -5,7 +5,7 @@ import { addToWatchLater, addToFavourites, addToHistory, addToSearchResult, clea
 import Button from '../custom componet/Button'
 
 const SearchResults = ({ navigation, moviesState, addToSearchResult, addToHistory, clearSearchResult, route }) => {
-  const { searchtext } = route.params;
+  const { searchtext, user } = route.params;
   const url = "https://www.omdbapi.com/?s=" + searchtext + "&page=1-100&apikey=ee42d47b"
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const SearchResults = ({ navigation, moviesState, addToSearchResult, addToHistor
       <Text>{item.Title}</Text>
       <Button title="Details" onPress={() => {
         addToHistory(item)
-        navigation.navigate("Movie Details", { id: item.imdbID, searchtext: searchtext })
+        navigation.navigate("Movie Details", { id: item.imdbID, searchtext: searchtext, user: user })
       }} />
     </View>
   );

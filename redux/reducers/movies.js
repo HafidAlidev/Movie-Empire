@@ -1,6 +1,7 @@
-import { ADD_FAVOURITES, ADD_HISTORY, ADD_SEARCH_RESULT, ADD_WATCHLATER, CLEAR_SEARCH_RESULT } from "../actionTypes"
+import { ADD_FAVOURITES, ADD_HISTORY, ADD_REVIEW, ADD_SEARCH_RESULT, ADD_WATCHLATER, CLEAR_SEARCH_RESULT } from "../actionTypes"
 
 const initialState = {
+    reviews: [],
     searchResult: [],
     watchLater: [],
     favourites: [],
@@ -26,8 +27,12 @@ export default function (movies = initialState, action) {
             return { ...movies, history: [...movies.history, value] }
         }
         case CLEAR_SEARCH_RESULT: {
-            console.log("hello124")
             return { ...movies, searchResult: [] }
+        }
+        case ADD_REVIEW: {
+            console.log("2")
+            const { value } = action.payload
+            return { ...movies, reviews: [...movies.reviews, value] }
         }
         default:
             return movies

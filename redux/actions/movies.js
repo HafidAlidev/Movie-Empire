@@ -1,4 +1,4 @@
-import { ADD_FAVOURITES, ADD_HISTORY, ADD_SEARCH_RESULT, ADD_WATCHLATER, CLEAR_SEARCH_RESULT } from "../actionTypes"
+import { ADD_FAVOURITES, ADD_HISTORY, ADD_REVIEW, ADD_SEARCH_RESULT, ADD_WATCHLATER, CLEAR_SEARCH_RESULT } from "../actionTypes"
 
 export const addToSearchResult = (value) => ({
     type: ADD_SEARCH_RESULT,
@@ -31,4 +31,11 @@ export const addToHistory = (value) => ({
 export const clearSearchResult = () => ({
     type: CLEAR_SEARCH_RESULT,
     payload: {}
+})
+
+export const addReview = (value) => ({
+    type: ADD_REVIEW,
+    payload: {
+        value: value
+    }
 })

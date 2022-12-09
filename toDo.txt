@@ -1,5 +1,6 @@
-- Custom Button Styles
-
 - Login/signup errors color (make red)
 
-- 
+- hide add review if not signed in 
+
+- dont allow search of nothing / add default value to searchtext if not entered
+
