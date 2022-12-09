@@ -5,6 +5,7 @@ import { login, logout, signup_ } from '../redux/actions/users'
 import { clearSearchResult } from '../redux/actions/movies'
 import { TextInput } from 'react-native-web'
 import Button from '../custom componet/Button'
+import MovieCardstyles from '../custom componet/moviecard'
 
 const Home = ({ navigation, userState, logout, clearSearchResult }) => {
   const [menuModal, setMenuModal] = useState(false);
@@ -13,7 +14,7 @@ const Home = ({ navigation, userState, logout, clearSearchResult }) => {
   return (
     <View>
       <Modal animationType="slide" transparent={false} visible={menuModal} onRequestClose={() => { setMenuModal(!menuModal); }}>
-        <View style={styles.container}>
+        <View style={MovieCardstyles.container}>
           <View style={[styles.modalView]}>
             <Button title="Favourites" onPress={() => {
               setMenuModal(!menuModal)

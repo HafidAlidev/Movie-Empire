@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { addToWatchLater, addToFavourites, addToHistory, addToSearchResult, clearSearchResult } from '../redux/actions/movies'
 import Button from '../custom componet/Button'
+import MovieCardstyles from '../custom componet/moviecard'
 
 const SearchResults = ({ navigation, moviesState, addToSearchResult, addToHistory, clearSearchResult, route }) => {
   const { searchtext } = route.params;
@@ -19,8 +20,8 @@ const SearchResults = ({ navigation, moviesState, addToSearchResult, addToHistor
   }, []);
 
   const renderSearchResults = ({ item }) => (
-    <View>
-      <Text>{item.Title}</Text>
+    <View style = {MovieCardstyles.container}>
+      <Text style = {MovieCardstyles.items}>{item.Title}</Text>
       <Button title="Details" onPress={() => {
         addToHistory(item)
         navigation.navigate("Movie Details", { id: item.imdbID, searchtext: searchtext })

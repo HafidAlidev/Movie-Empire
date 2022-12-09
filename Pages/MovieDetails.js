@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { addToWatchLater, addToFavourites, addToHistory, addToSearchResult } from '../redux/actions/movies'
 import Button from '../custom componet/Button'
+import MovieCardstyles from '../custom componet/moviecard'
 
 const MovieDetails = ({ navigation, moviesState, addToFavourites, addToWatchLater, route }) => {
     const { id, searchText } = route.params
@@ -12,14 +13,17 @@ const MovieDetails = ({ navigation, moviesState, addToFavourites, addToWatchLate
         for (let i = 0; i < moviesState.searchResult.length; i++) {
             const movie = moviesState.searchResult[i];
             if (movie.imdbID === id) {
+             
                 setMovie(movie)
+                
             }
         }
     }, [])
 
     return (
-        <View>
-            <Text>{movie?.Title}</Text>
+        <View style = {MovieCardstyles.container}>
+            <Text style = {MovieCardstyles.items}>{movie?.Title}</Text>
+           
             <Button title='Save to Watch Later' onPress={() => { addToWatchLater(movie) }} />
             <Button title='Add to Favourites' onPress={() => { addToFavourites(movie) }} />
             <Button title="Back" onPress={() => {
