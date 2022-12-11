@@ -13,7 +13,6 @@ const Home = ({ navigation, userState, logout }) => {
 
   useEffect(()=>{
     setUser(userState[0]?.result ? userState[0].result : "No user")
-    console.log(userState)
   }, [search])
 
   return (
