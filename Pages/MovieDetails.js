@@ -21,9 +21,12 @@ const MovieDetails = ({ navigation, moviesState, addToFavourites, addToWatchLate
     }, [])
 
     return (
+        
         <View style = {MovieCardstyles.container}>
+            
+            
             <Text style = {MovieCardstyles.items}>{movie?.Title}</Text>
-           
+             
             <Button title='Save to Watch Later' onPress={() => { addToWatchLater(movie) }} />
             <Button title='Add to Favourites' onPress={() => { addToFavourites(movie) }} />
             <Button title="Back" onPress={() => {

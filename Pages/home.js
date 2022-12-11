@@ -12,9 +12,9 @@ const Home = ({ navigation, userState, logout, clearSearchResult }) => {
   const [search,setSearch] = useState("");
 
   return (
-    <View>
+    <View style = {MovieCardstyles.container}>
       <Modal animationType="slide" transparent={false} visible={menuModal} onRequestClose={() => { setMenuModal(!menuModal); }}>
-        <View style={MovieCardstyles.container}>
+        <View style={MovieCardstyles.items}>
           <View style={[styles.modalView]}>
             <Button title="Favourites" onPress={() => {
               setMenuModal(!menuModal)
@@ -52,7 +52,7 @@ const Home = ({ navigation, userState, logout, clearSearchResult }) => {
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: "left", alignItems: "left", marginTop: 22 },
-  searchinput: { margin: 15, width: 1000,height:30, alignItems: 'left'},
+  searchinput: { margin: 15, width: 1000,height:30, alignItems: 'left', backgroundColor:"white"},
   modalText: { marginBottom: 10 },
   modalView: { width: "80%", height: 'auto', margin: 5, backgroundColor: "black", borderColor: "red", borderWidth: 1, borderRadius: 5, padding: 15, alignItems: "center", justifyContent: "space-between" },
   menubutton: {height:20,width:40,alignItems:'left',justifyContent:'left',padding:20,backgroundColor:"orange"}

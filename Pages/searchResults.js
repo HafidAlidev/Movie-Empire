@@ -19,8 +19,9 @@ const SearchResults = ({ navigation, moviesState, addToSearchResult, addToHistor
       });
   }, []);
 
-  const renderSearchResults = ({ item }) => (
+  const renderSearchResults = ({ item, items }) => (
     <View style = {MovieCardstyles.container}>
+   
       <Text style = {MovieCardstyles.items}>{item.Title}</Text>
       <Button title="Details" onPress={() => {
         addToHistory(item)
