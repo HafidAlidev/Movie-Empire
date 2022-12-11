@@ -10,8 +10,9 @@ const Home = ({ navigation, userState, logout }) => {
   const [user, setUser] = useState(userState[0]?.result ? userState[0].result : "No user")
   const [menuModal, setMenuModal] = useState(false);
   const [search, setSearch] = useState("");
+  const [errors, setErrors] = useState('')
 
-  useEffect(()=>{
+  useEffect(() => {
     setUser(userState[0]?.result ? userState[0].result : "No user")
   }, [search])
 
@@ -49,7 +50,14 @@ const Home = ({ navigation, userState, logout }) => {
       <Text>{userState[0]?.result?.name ? `Welcome Back ${userState[0]?.result?.name}` : 'Home'}</Text>
       <Button title='Menu' onPress={() => setMenuModal(!menuModal)} style={styles.menubutton} />
       <TextInput style={styles.searchinput} placeholder="Search for a movie..." value={search} onChangeText={setSearch} />
-      <Button title='Search' onPress={() => navigation.navigate("Search Result", { searchtext: search, user: user })} />
+      <Text>{errors}</Text>
+      <Button title='Search' onPress={() => {
+        if (search.length < 1) {
+          setErrors("Enter movie name to search!")
+          return
+        }
+        navigation.navigate("Search Result", { searchtext: search, user: user })
+      }} />
     </View>
   )
 }

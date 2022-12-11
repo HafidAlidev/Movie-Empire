@@ -12,6 +12,9 @@ const SearchResults = ({ navigation, moviesState, addToSearchResult, addToHistor
     fetch(url)
       .then((response) => response.json())
       .then((json) => {
+        if (json.Response == "False") {
+          return
+        }
         json.Search.map(movie => {
           addToSearchResult(movie)
         });

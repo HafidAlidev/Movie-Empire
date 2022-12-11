@@ -57,14 +57,14 @@ const MovieDetails = ({ navigation, moviesState, addToFavourites, addToWatchLate
 
     return (
         <View style={styles.container} >
-            <Text>{movie?.Title} - {avgRating} / 10</Text>
+            <Text>{movie?.Title} - {Number.isNaN(avgRating) ? 'No rating yet!' : avgRating} / 10</Text>
             <Button title='Save to Watch Later' onPress={() => { addToWatchLater(movie) }} />
             <Button title='Add to Favourites' onPress={() => { addToFavourites(movie) }} />
-            <View>
+            { user !== "No user" && <View>
                 <TextInput style={styles.reviewInput} placeholder="Write a review..." onChangeText={setReview} />
                 <TextInput style={styles.reviewInput} placeholder="Rating: /10" value={rating} onChangeText={onCheckRating} />
                 <Button title='Submit Review' onPress={handleReviewSubmit} />
-            </View>
+            </View>}
             <View>
                 <Text>Reviews:</Text>
                 <FlatList data={reviews} renderItem={renderReviews} />
