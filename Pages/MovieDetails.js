@@ -9,9 +9,12 @@ const MovieDetails = ({ navigation, moviesState, addToFavourites, addToWatchLate
     const [movie, setMovie] = useState()
     const [review, setReview] = useState('')
     const [reviews, setReviews] = useState([])
+    const [rating, setRating] = useState('')
+    const [avgRating, setAvgRating] = useState('')
 
     useEffect(() => {
         const reviewsList = []
+        let totalRating = 0
         for (let i = 0; i < moviesState.searchResult.length; i++) {
             const movie = moviesState.searchResult[i];
             if (movie.imdbID === id) {
@@ -20,35 +23,52 @@ const MovieDetails = ({ navigation, moviesState, addToFavourites, addToWatchLate
         }
         for (let i = 0; i < moviesState.reviews.length; i++) {
             const review = moviesState.reviews[i];
+            totalRating += review.rating
             if (review.movieId === id) {
                 reviewsList.push(review)
             }
         }
+        setAvgRating(totalRating / moviesState.reviews.length)
         setReviews(reviewsList)
-        console.log(user)
     }, [moviesState])
 
     const handleReviewSubmit = () => {
-        addReview({ movieId: id, review: review, postedBy: user.name })
-        console.log(user.name)
+        addReview({ movieId: id, review: review, rating: rating, postedBy: user.name })
+    }
+
+    const onCheckRating = (value) => {
+        const parsedQty = Number.parseInt(value)
+        if (Number.isNaN(parsedQty)) {
+            setRating(0)
+        } else if (parsedQty > 10) {
+            setRating(10)
+        } else {
+            setRating(parsedQty)
+        }
     }
 
     const renderReviews = ({ item }) => (
         <View>
             <Text>Posted by: {item.postedBy}</Text>
             <Text>{item.review}</Text>
+            <Text>Rating: {item.rating}</Text>
         </View>
     );
 
     return (
         <View style={styles.container} >
-            <Text>{movie?.Title}</Text>
+            <Text>{movie?.Title} - {avgRating} / 10</Text>
             <Button title='Save to Watch Later' onPress={() => { addToWatchLater(movie) }} />
             <Button title='Add to Favourites' onPress={() => { addToFavourites(movie) }} />
-            <TextInput style={styles.reviewInput} placeholder="Write a review..." onChangeText={setReview} />
-            <Button title='Submit Review' onPress={handleReviewSubmit} />
-            <Text>Reviews:</Text>
-            <FlatList data={reviews} renderItem={renderReviews} />
+            <View>
+                <TextInput style={styles.reviewInput} placeholder="Write a review..." onChangeText={setReview} />
+                <TextInput style={styles.reviewInput} placeholder="Rating: /10" value={rating} onChangeText={onCheckRating} />
+                <Button title='Submit Review' onPress={handleReviewSubmit} />
+            </View>
+            <View>
+                <Text>Reviews:</Text>
+                <FlatList data={reviews} renderItem={renderReviews} />
+            </View>
             <Button title="Back" onPress={() => {
                 navigation.navigate("Search Result", { searchText: searchText })
             }} />

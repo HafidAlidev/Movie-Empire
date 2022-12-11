@@ -58,8 +58,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: "center", alignItems: "center", marginTop: 22 },
   searchinput: { margin: 15, width: "50%", height: 30, alignItems: 'left', borderWidth: 2 },
   modalText: { marginBottom: 10 },
-  modalView: { width: "80%", height: 'auto', margin: 5, backgroundColor: "black", borderColor: "red", borderWidth: 1, borderRadius: 5, padding: 15, alignItems: "center", justifyContent: "space-between" },
-  menubutton: { height: 20, width: 40, alignItems: 'left', justifyContent: 'left', padding: 20, backgroundColor: "orange" }
+  modalView: { width: "80%", height: 'auto', margin: 5, borderWidth: 1, borderRadius: 5, padding: 15, alignItems: "center", justifyContent: "space-between" },
 });
 
 const mapStateToProps = (userState) => (userState)
