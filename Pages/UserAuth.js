@@ -28,14 +28,14 @@ const UserAuth = ({ navigation, userState, login, logout, signup_ }) => {
     }
 
     return (
-        <View style={MovieCardstyles.container}>
+        <View >
             <View>
                 <Text>{isSignup ? 'Sign up' : 'Sign In'}</Text>
                     <View>
                         {
                             isSignup && (
                                 <View>
-                                    <TextInput style={MovieCardstyles.items} placeholder='Name' onChangeText={setName}/>
+                                    <TextInput placeholder='Name' onChangeText={setName}/>
                                 </View>
                             )
                         }
