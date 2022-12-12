@@ -4,6 +4,7 @@ import { signin, signup } from '../auth/actions'
 import { connect } from 'react-redux'
 import { login, logout, signup_ } from '../redux/actions/users'
 import Button from '../custom componet/Button'
+import MovieCardstyles from '../custom componet/moviecard'
 
 const UserAuth = ({ navigation, userState, login, logout, signup_ }) => {
     const [isSignup, setIsSignup] = useState(false)
@@ -27,14 +28,14 @@ const UserAuth = ({ navigation, userState, login, logout, signup_ }) => {
     }
 
     return (
-        <View style={styles.container}>
+        <View style={MovieCardstyles.container}>
             <View>
                 <Text>{isSignup ? 'Sign up' : 'Sign In'}</Text>
                     <View>
                         {
                             isSignup && (
                                 <View>
-                                    <TextInput style={styles.textInput} placeholder='Name' onChangeText={setName}/>
+                                    <TextInput style={MovieCardstyles.items} placeholder='Name' onChangeText={setName}/>
                                 </View>
                             )
                         }
